@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use Midtrans;
 use App\Models\Camp;
 use App\Models\Checkout;
 use Illuminate\Support\Str;
@@ -12,16 +11,17 @@ use App\Mail\Checkout\AfterCheckout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\User\Checkout\Store;
+use Midtrans;
 use Exception;
 
 class CheckoutController extends Controller
 {
     public function __construct()
     {
-        Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
-        Midtrans\Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
-        Midtrans\Config::$isSanitized = env('MIDTRANS_IS_SANITIZED');
-        Midtrans\Config::$is3ds = env('MIDTRANS_IS_3DS');
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
+        \Midtrans\Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
+        \Midtrans\Config::$isSanitized = env('MIDTRANS_IS_SANITIZED');
+        \Midtrans\Config::$is3ds = env('MIDTRANS_IS_3DS');
     }   
     /**
      * Display a listing of the resource.
