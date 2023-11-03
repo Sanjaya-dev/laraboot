@@ -18,7 +18,6 @@
                                     <th>Price</th>
                                     <th>Register Data</th>
                                     <th>Paid Status</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -26,9 +25,10 @@
                                     <tr>
                                         <td>{{$checkout->User->name}}</td>
                                         <td>{{$checkout->Camp->title}}</td>
-                                        <td>{{$checkout->Camp->price}}</td>
+                                        <td>{{$checkout->Camp->price * 100}}</td>
                                         <td>{{$checkout->created_at->format('M d y')}}</td>
-                                        <td>
+                                        <td>{{$checkout->payment_status}}</td>
+                                        {{-- <td>
                                             @if ($checkout->is_paid)
                                                 <span class="badge bg-success">Paid</span>
                                             @else
@@ -42,7 +42,7 @@
                                                     <button class="btn btn-primary btn-ss">Set to Paid</button>
                                                 </form>
                                             @endif
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @empty
                                     <tr>
