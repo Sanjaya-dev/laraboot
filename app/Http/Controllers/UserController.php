@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\User\AfterRegister;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 
 class UserController extends Controller
@@ -34,8 +36,17 @@ class UserController extends Controller
 
         // mengecek apakah amail sudah terdaftar di database
         //jjika belum maka email akan di tambahkan
-        $user = User::firstOrCreate(['email' => $data['email']],$data);
+        // $user = User::firstOrCreate(['email' => $data['email']],$data);
         
+        // melakukan cek email pada table user
+        // sudah terdaftar atau belum
+        $user = User::whereEmail($data['email'])->first();
+        if (!$user){
+            $user = User::create($data);
+            // mengirim email ke user
+            Mail::to($user->email)->send(new AfterRegister($user));
+        }
+
         Auth::login($user,true);
 
         return redirect(route('welcome'));
