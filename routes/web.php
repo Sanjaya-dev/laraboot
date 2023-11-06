@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
+use App\Http\Controllers\Admin\DiscountController as AdminDiscount;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/', function () {
 Route::get('sign-in-google', [UserController::class,'google'] )->name('user.login.google');
 Route::get('auth/google/callback',[UserController::class,'handleProviderCallback'])->name('user.google.callback');
 
+// midtrans snap
 Route::get('payment/success',[CheckoutController::class,'midtransCallback']);
 Route::post('payment/success',[CheckoutController::class,'midtransCallback']);
 
@@ -49,11 +51,15 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // admin dashboard
-    Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->middleware('ensureUserRole:admin')->group(function(){
+    Route::prefix('admin/dashboard')->name('admin.')->middleware('ensureUserRole:admin')->group(function(){
         Route::get('/', [AdminDashboard::class,'index'])->name('dashboard');
 
         // admin checkout
         Route::post('checkout/{checkout}',[AdminCheckout::class,'update'])->name('checkout.update');
+        
+        // admin discount
+        Route::resource('discount',AdminDiscount::class);
+
     });
 });
 
