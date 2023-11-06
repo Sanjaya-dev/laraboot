@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPaymentStatusAndMidtransUrlAndMidtransBookingCodeInCheckoutsTable extends Migration
+class AddDiscountIdAndDiscountPercentageAndTotalOnCheckoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,11 @@ class AddPaymentStatusAndMidtransUrlAndMidtransBookingCodeInCheckoutsTable exten
     public function up()
     {
         Schema::table('checkouts', function (Blueprint $table) {
-            $table->string('payment_status', 100)->default('waiting')->after('camp_id');
-            $table->string('midtrans_url')->nullable()->after('payment_status');
-            $table->string('midtrans_booking_code')->nullable()->after('midtrans_url');
+            $table->foreignId('discount_id')->nullable();
+            $table->unsignedInteger('discount_percentage')->nullable();
+            $table->unsignedInteger('total')->default(0);
+
+            $table->foreign('discount_id')->references('id')->on('discounts');
         });
     }
 
@@ -28,7 +30,8 @@ class AddPaymentStatusAndMidtransUrlAndMidtransBookingCodeInCheckoutsTable exten
     public function down()
     {
         Schema::table('checkouts', function (Blueprint $table) {
-            $table->dropColumn(['payment_status', 'midtrans_url', 'midtrans_booking_code']);
+            $table->dropForeign('checkouts_discount_id_foreign');
+            $table->dropColumn(['discount_id','discount_percentage','total']);
         });
     }
 }
