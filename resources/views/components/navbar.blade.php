@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Business</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Article</a>
+                </li>
             </ul>
             @auth
                 <div class="d-flex user-logged nav-item dropdown no-arrow">

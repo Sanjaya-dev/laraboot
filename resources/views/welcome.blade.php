@@ -32,7 +32,7 @@
             </div>
             <div class="row brands">
                 <div class="col-lg-12 col-12 text-center">
-                    <img src="{{ asset('images/brands.png') }}" alt="">
+                    <img src="{{ asset('images/brands.png') }}" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-3 col-6">
                     <div class="item-benefit">
                         <img src="{{ asset('images/ic_globe.png') }}" class="icon" alt="">
                         <h3 class="title">
@@ -63,7 +63,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-3 col-6">
                     <div class="item-benefit">
                         <img src="{{ asset('images/ic_globe-1.png') }}" class="icon" alt="">
                         <h3 class="title">
@@ -74,7 +74,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-3 col-6">
                     <div class="item-benefit">
                         <img src="{{ asset('images/ic_globe-2.png') }}" class="icon" alt="">
                         <h3 class="title">
@@ -85,7 +85,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-3 col-6">
                     <div class="item-benefit">
                         <img src="{{ asset('images/ic_globe-3.png') }}" class="icon" alt="">
                         <h3 class="title">
@@ -320,9 +320,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row pb-70">
+            {{-- <div class="row brands pb-70">
                 <div class="col-lg-12 col-12 text-center">
-                    <img src="{{ asset('images/brands.pn') }}g" height="30" alt="">
+                    <img src="{{ asset('images/brands.png') }}" class="img-fluid" alt="">
+                </div>
+            </div> --}}
+            <div class="row brands">
+                <div class="col-lg-12 col-12 text-center">
+                    <img src="{{ asset('images/brands.png') }}" class="img-fluid">
                 </div>
             </div>
         </div>

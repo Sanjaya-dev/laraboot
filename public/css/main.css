@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -386,5 +387,40 @@ body {
 
 .navbar .navbar-brand img {
   height: 42px;
+}
+/* mobile */
+@media screen and (max-width: 414px) {
+  .benefits .item-benefit {
+    margin-left: 20px;
+    width: 100%;
+  }
+  .pricing .table-pricing {
+    margin-top: 20px;
+  }
+  .testimonials {
+    margin-top: 1370px !important;
+  }
+  .testimonials .item-review {
+    margin-top: 20px;
+  }
+
+  /* login */
+  .login-user .left {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  .login-user .right {
+    width: 1000px;
+    text-align: center;
+    padding-top: 100px;
+  }
+
+  /* .login-user .right p {
+    margin-bottom: 0;
+  } */
+
+
 }
 /*# sourceMappingURL=main.css.map */

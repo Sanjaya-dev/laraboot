@@ -24,6 +24,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+// Route::get('/articles', []
+// })->name('articles');
+
 
 // Route::get('success-checkout', function () {
 //     return view('success_checkout');
